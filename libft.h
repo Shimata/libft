@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wquinoa <wquinoa@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: wquinoa <wquinoa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 21:05:26 by wquinoa           #+#    #+#             */
-/*   Updated: 2020/07/31 13:29:20 by wquinoa          ###   ########.fr       */
+/*   Updated: 2020/08/03 22:43:12 by wquinoa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # define FD_LIMIT 1024
-# define BUFFER_SIZE 1
+# define BUFFER_SIZE 32
+# define GC_SIZE 64
 # include "ft_printf/includes/libftprintf.h"
 
 /*
@@ -103,11 +104,13 @@ typedef struct		s_btree
 }					t_btree;
 
 t_btree				*tree_create_node(void *item);
-void	    		tree_apply_prefix(t_btree *root, void (*af)(void *));
-void	    		tree_apply_infix(t_btree *root, void (*af)(void *));
+void				tree_apply_prefix(t_btree *root, void (*af)(void *));
+void				tree_apply_infix(t_btree *root, void (*af)(void *));
 void				tree_apply_suffix(t_btree *root, void (*af)(void *));
-void				tree_insert_data(t_btree **root, void *item, int (*cmp)(void *, void *));
-t_btree				*tree_search(t_btree *root, void *item, int (*cmp)(void *, void *));
+void				tree_insert_data(t_btree **root, void *item,
+									int (*cmp) (void *, void *));
+t_btree				*tree_search(t_btree *root, void *item,
+									int (*cmp)(void *, void *));
 
 /*
 ** Math & Utility
@@ -120,6 +123,8 @@ int					ft_fput(const char *str, void *s1, void *s2, int fd);
 void				ft_put1(const char *str, void *s1);
 void				ft_put2(const char *str, void *s1, void *s2);
 void				ft_swap(void **ptr1, void **ptr2);
+void				*ft_malloc_gc(size_t size);
+void				*ft_calloc_gc(size_t nbytes, size_t size);
 
 /*
 ** char ** manipulation
