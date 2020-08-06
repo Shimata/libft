@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wquinoa <wquinoa@student.42.fr>            +#+  +:+       +#+         #
+#    By: wquinoa <wquinoa@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/07 23:33:20 by wquinoa           #+#    #+#              #
-#    Updated: 2020/08/03 20:04:17 by wquinoa          ###   ########.fr        #
+#    Updated: 2020/08/06 16:15:42 by wquinoa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,9 +71,21 @@ CF =	-Wall -Wextra -Werror
 .PHONY: all bonus clean fclean re
 vpath %c extr  ft_btree  ft_lists  ft_mem  ft_print  ft_printf/src  ft_string  ft_tab  ft_to_is
 
-#|    Conditionals
-#$(VERBOSE).SILENT:
-#.ONESHELL:
+#|    Progress bar
+$(VERBOSE).SILENT:
+ifndef PBAR
+T := $(shell $(MAKE) $(MAKECMDGOALS) --no-print-directory \
+	-nrRf $(firstword $(MAKEFILE_LIST)) \
+	PBAR="COUNTER" | grep -c "COUNTER")
+N := x
+C = $(words $N)$(eval N := x $N)
+ ifneq ($(T), 0)
+	PBAR = "[`expr $C '*' 100 / $T`%]"
+ else
+	PBAR = "[`expr $C '*' 100 / 22`%]"
+ endif
+endif
+
 ifdef WITH_BONUS
 OBJ_FILES = $(addprefix $(BIN)/, $(OBJ)) $(addprefix $(BIN)/, $(BSRCS:c=o))
 else
@@ -88,9 +100,9 @@ bonus:
 
 $(NAME): $(OBJ_FILES)
 	@ar rcs $(NAME) $^
-	@echo "$(MADE_MSG)$(NAME)$(WHT)"
+	@echo "\n$(MADE_MSG)$(NAME)$(WHT)\n"
 ifeq ($(WITH_BONUS),true)
-	@echo "$(WHT1)   added   $(GRN1)ft_printf$(WHT)"
+	@echo "$(WHT1)   added   $(GRN1)ft_printf$(WHT)\n"
 endif
 
 norme:
@@ -100,12 +112,12 @@ norme:
 #|    Creating bindir and objects
 $(BIN):
 	@mkdir $(BIN)
-	@printf "$(MADE_MSG) %-42s$(WHT)\r" $@
+	@printf "$(MADE_MSG)%s$(WHT)\n\n" $@
 
 -include $(DEP)
 $(BIN)/%.o: %.c | $(BIN)
 	@$(CC) -I./ $< -c $(CF) -o $@
-	@printf "   Adding $(DRK)$(GRN) %-42s$(WHT)\r" "$@..."
+	@printf "$(DRK)%9s$(WHT)  Adding $(DRK)$(GRN)%-42s$(WHT)\r" $(PBAR) "$@..."
 
 #|    Trash removal rules
 clean:
