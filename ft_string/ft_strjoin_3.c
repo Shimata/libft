@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_dlm_bonus.c                             :+:      :+:    :+:   */
+/*   ft_strjoin_3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wquinoa <wquinoa@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: wquinoa <wquinoa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:54:50 by wquinoa           #+#    #+#             */
-/*   Updated: 2020/05/07 22:03:38 by wquinoa          ###   ########.fr       */
+/*   Updated: 2020/11/09 11:05:20 by wquinoa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char		*ft_strjoin_dlm(char *s1, char *s2, char *s3)
 	if (!(tmp = ft_strjoin(s1, s2)))
 		return (NULL);
 	if (!(res = ft_strjoin(tmp, s3)))
-		return (NULL);
+		return (ft_del(tmp));
 	free(tmp);
 	return (res);
 }

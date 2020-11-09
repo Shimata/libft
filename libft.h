@@ -6,7 +6,7 @@
 /*   By: wquinoa <wquinoa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 21:05:26 by wquinoa           #+#    #+#             */
-/*   Updated: 2020/08/03 22:43:12 by wquinoa          ###   ########.fr       */
+/*   Updated: 2020/11/09 11:11:19 by wquinoa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # define FD_LIMIT 1024
 # define BUFFER_SIZE 32
+# define WHITESPACES "\n\r\t\v\f "
 # define GC_SIZE 64
 # include "ft_printf/includes/libftprintf.h"
 
@@ -59,6 +60,9 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
 char				**ft_split(char const *s, char c);
+char				**ft_strtok(char const *s, char const *set);
+char				*find_first_of(char const *str, char const *set);
+char				*skip_symbols(char const *str, char const *set);
 char				*ft_itoa(int n);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int					ft_putchar_fd(char c, int fd);
@@ -82,10 +86,10 @@ typedef	struct		s_list
 }					t_list;
 
 t_list				*ft_lstnew(void *content);
-void				ft_lstadd_front(t_list **lst, t_list *new);
+void				ft_lstadd_front(t_list **lst, t_list *elem);
 int					ft_lstsize(t_list *lst);
 t_list				*ft_lstlast(t_list *lst);
-void				ft_lstadd_back(t_list **lst, t_list *new);
+void				ft_lstadd_back(t_list **lst, t_list *elem);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wquinoa <wquinoa@student.21-school.ru>     +#+  +:+       +#+         #
+#    By: wquinoa <wquinoa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/07 23:33:20 by wquinoa           #+#    #+#              #
-#    Updated: 2020/08/06 16:15:42 by wquinoa          ###   ########.fr        #
+#    Updated: 2020/11/09 11:03:04 by wquinoa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ MEM :=			ft_bzero.c			ft_memccpy.c		ft_memchr.c			ft_memcmp.c			ft_memcpy.c				\
 STRING :=		ft_split.c			ft_strchr.c			ft_strdup.c			ft_strjoin.c		ft_strlcat.c			\
 				ft_strlcpy.c		ft_strlen.c			ft_strmapi.c		ft_strncmp.c		ft_strnstr.c			\
 				ft_strrchr.c		ft_strtrim.c		ft_substr.c			ft_strcmp.c			ft_strjoin_3.c			\
-				ft_del.c
+				ft_del.c			ft_strtok.c
 
 PRINT :=		ft_fput.c			ft_putchar_fd.c		ft_putendl_fd.c		ft_putnbr_fd.c		ft_putstr_fd.c			\
 				ft_put.c
