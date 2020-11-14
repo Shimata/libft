@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wquinoa <wquinoa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wquinoa <wquinoa@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 05:54:10 by wquinoa           #+#    #+#             */
-/*   Updated: 2020/07/20 17:16:53 by wquinoa          ###   ########.fr       */
+/*   Updated: 2020/11/13 05:08:43 by wquinoa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		get_next_line(int fd, char **line)
 		if (ft_strchr(fd_tab[fd], '\n') || !flag)
 		{
 			free(buf);
-			return (write_next_line(line, &fd_tab[fd]));
+			return (write_next_line(line, fd_tab + fd));
 		}
 	}
 	free(buf);

@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalvaro <jalvaro@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: wquinoa <wquinoa@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/19 14:05:37 by wquinoa           #+#    #+#             */
-/*   Updated: 2020/07/25 16:17:30 by jalvaro          ###   ########.fr       */
+/*   Updated: 2020/11/14 05:51:02 by wquinoa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
-# define INT_MAX 		2147483647
-# define LLONG_MAX		9223372036854775807LL
+# ifndef INT_MAX
+#  define INT_MAX 		2147483647
+#  define LLONG_MAX		9223372036854775807LL
+# endif
 # define LLONG_MIN_STR	"9223372036854775808"
 # define BASE			"0123456789abcdef"
 # define SPECS			"%csuxXpdi"

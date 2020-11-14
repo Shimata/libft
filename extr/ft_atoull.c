@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_atoull.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wquinoa <wquinoa@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/03 03:43:44 by wquinoa           #+#    #+#             */
-/*   Updated: 2020/11/14 06:36:08 by wquinoa          ###   ########.fr       */
+/*   Created: 2020/04/29 19:53:08 by wquinoa           #+#    #+#             */
+/*   Updated: 2020/11/14 05:21:53 by wquinoa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+unsigned long long	ft_atoull(const char *str)
 {
-	int i;
-
-	if (n == 0)
-		return (0);
+	const unsigned long long	limit = UINT64_MAX / 10;
+	unsigned long long			res;
+	int							i;
+	
+	res = 0;
 	i = 0;
-	while ((s1[i] == s2[i]) && --n && s1[i] && s2[i])
+	while (*str && ft_isspace(*str))
+		str++;
+	while (ft_isdigit(str[i]))
 		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	while (--i >= 0)
+	{
+		if (res > limit && i > 0)
+			return (0);
+		res *= 10;
+		res += (str[i] - '0');
+	}
+	return (res);
 }
